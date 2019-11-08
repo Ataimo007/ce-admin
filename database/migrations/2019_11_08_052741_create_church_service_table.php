@@ -21,7 +21,7 @@ class CreateChurchServiceTable extends Migration
             $table->string('type', 15 );
             $table->integer('attendance');
             $table->integer('offering');
-            $table->string('status', 15 );
+            $table->enum( "status", ["ONGOING", "CLOSED"] );
             $table->string('description');
             $table->time('start_time' );
             $table->time('end_time' );
