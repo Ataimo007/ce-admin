@@ -13,7 +13,7 @@ class CreateChurchServiceTable extends Migration
      */
     public function up()
     {
-        Schema::create('church_service', function (Blueprint $table) {
+        Schema::create('services', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('church_id');
             $table->string('name');
@@ -36,6 +36,6 @@ class CreateChurchServiceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('church_service');
+        Schema::dropIfExists('services');
     }
 }
