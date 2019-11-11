@@ -13,19 +13,19 @@ class CreateCellMeetingTable extends Migration
      */
     public function up()
     {
-        Schema::create('cell_meeting', function (Blueprint $table) {
+        Schema::create('cell_meetings', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('church_id');
             $table->bigInteger('cell_id');
             $table->unsignedTinyInteger('week');
             $table->unsignedSmallInteger('year');
             $table->date('date');
-            $table->integer('attendance');
-            $table->integer('offering');
-            $table->string('description');
-            $table->enum( "status", ["ONGOING", "CLOSED"] );
+            $table->integer('attendance')->default(1);
+            $table->integer('offering')->default(0);
+            $table->string('description')->nullable();
+            $table->enum( "status", ["ONGOING", "CLOSED"] )->default("ONGOING");
             $table->time( "start_time" );
-            $table->time( "end_time" );
+            $table->time( "end_time" )->nullable();
             $table->timestamps();
         });
     }
@@ -37,6 +37,6 @@ class CreateCellMeetingTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cell_meeting');
+        Schema::dropIfExists('cell_meetings');
     }
 }

@@ -15,16 +15,16 @@ class CreateChurchServiceTable extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('church_id');
+            $table->bigInteger('church_id')->default(1);
             $table->string('name');
             $table->date('date');
-            $table->string('type', 15 );
-            $table->integer('attendance');
-            $table->integer('offering');
-            $table->enum( "status", ["ONGOING", "CLOSED"] );
-            $table->string('description');
+            $table->string('type', 15 )->nullable();
+            $table->integer('attendance')->default(1);
+            $table->integer('offering')->default(0);
+            $table->enum( "status", ["ONGOING", "CLOSED"] )->default("ONGOING");
+            $table->string('description')->nullable();
             $table->time('start_time' );
-            $table->time('end_time' );
+            $table->time('end_time' )->nullable();
             $table->timestamps();
         });
     }

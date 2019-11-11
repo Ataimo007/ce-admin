@@ -13,14 +13,14 @@ class CreateCellTable extends Migration
      */
     public function up()
     {
-        Schema::create('cell', function (Blueprint $table) {
+        Schema::create('cells', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name', 20 );
             $table->bigInteger('leader_id');
-            $table->bigInteger('assistant_id');
-            $table->smallInteger('membership_strength');
-            $table->string('subject');
-            $table->string('venue');
+            $table->bigInteger('assistant_id')->nullable();
+            $table->smallInteger('membership_strength')->default(1);
+            $table->string('subject')->nullable();
+            $table->string('venue')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ class CreateCellTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cell');
+        Schema::dropIfExists('cells');
     }
 }
