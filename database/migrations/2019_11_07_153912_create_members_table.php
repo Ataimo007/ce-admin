@@ -18,8 +18,8 @@ class CreateMembersTable extends Migration
             $table->bigInteger('church_id')->default(1);
             $table->string('email_address', 50 )->nullable()->unique();
             $table->string('first_name', 20 );
-            $table->string('surname', 20 );
-            $table->string('other_names', 20 );
+            $table->string('surname', 20 )->nullable();
+            $table->string('other_names', 20 )->nullable();
             $table->enum('gender', ["MALE", "FEMALE"] );
             $table->enum('rank', [ "First Timer", "Visitor", "Member", "Leader", "Senior Leader", "Cell Executive", "Cell Leader", "Coordinator", "Pastor", "Sub Group Pastor",
             "Group Pastor", "Zonal Pastor", "Deacon" ] )->default("First Timer");
